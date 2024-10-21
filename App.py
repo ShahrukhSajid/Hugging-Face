@@ -20,4 +20,4 @@ if st.button("Translate"):
         st.write("**Translated Text:**")
         st.write(translated_text)
     else:
-        st.error("Please enter some text to translate.")
+        st.error("Please enter some text to translate.YO")
