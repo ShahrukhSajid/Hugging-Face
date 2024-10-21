@@ -1,4 +1,7 @@
 import streamlit as st
+pip list
+pip install transformers
+
 from transformers import pipeline
 
 # Load the translation model from Hugging Face
