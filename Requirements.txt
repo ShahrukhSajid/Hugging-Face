@@ -1,6 +1,4 @@
-streamlit
-transformers
-torch
-python==3.8
-
+streamlit==1.17.0
+transformers==4.21.0
+torch==1.12.1
 
