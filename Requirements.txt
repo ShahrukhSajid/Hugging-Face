@@ -1,4 +1,6 @@
 streamlit
 transformers
 torch
+python==3.8
+
 
