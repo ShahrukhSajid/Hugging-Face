@@ -1,12 +1,11 @@
 import streamlit as st
-pip list
-pip install transformers
+from transformers import pipeline, AutoModelForSeq2SeqLM, AutoTokenizer
 
-from transformers import pipeline
-
-# Load the translation model from Hugging Face
+# Load the translation model
 model_name = "HuggingFace-username/model-name"  # Replace with your model's name
-translator = pipeline("translation_en_to_roman_ur", model=model_name)
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+model = AutoModelForSeq2SeqLM.from_pretrained(model_name)
+translator = pipeline("translation_en_to_roman_ur", model=model, tokenizer=tokenizer)
 
 # Streamlit UI
 st.title("English to Roman Urdu Translator")
@@ -17,7 +16,6 @@ input_text = st.text_area("Enter English text:")
 # Translation button
 if st.button("Translate"):
     if input_text:
-        # Translate the input text
         translated_text = translator(input_text)[0]['translation_text']
         st.write("**Translated Text:**")
         st.write(translated_text)
