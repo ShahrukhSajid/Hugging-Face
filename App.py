@@ -1,20 +1,22 @@
 import streamlit as st
 from transformers import pipeline
 
-# Load the translation model
-# Replace 'your-model-name' with the actual model from Hugging Face that supports English to Roman Urdu translation
-model_name = "your-model-name"  # e.g., "HuggingFaceH4/your-model"
-translator = pipeline("translation", model=model_name)
+# Load the translation model from Hugging Face
+model_name = "HuggingFace-username/model-name"  # Replace with your model's name
+translator = pipeline("translation_en_to_roman_ur", model=model_name)
 
-# Streamlit app layout
+# Streamlit UI
 st.title("English to Roman Urdu Translator")
 
+# Input text box
 input_text = st.text_area("Enter English text:")
 
+# Translation button
 if st.button("Translate"):
     if input_text:
-        # Perform translation
-        translation = translator(input_text, target_lang="ur")[0]['translation_text']
-        st.write("Translation:", translation)
+        # Translate the input text
+        translated_text = translator(input_text)[0]['translation_text']
+        st.write("**Translated Text:**")
+        st.write(translated_text)
     else:
-        st.write("Please enter some text to translate.")
+        st.error("Please enter some text to translate.")
